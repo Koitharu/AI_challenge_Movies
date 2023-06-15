@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:gravity="center_vertical"
+    android:minHeight="?listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingStart="?listPreferredItemPaddingStart"
+    android:paddingEnd="?listPreferredItemPaddingEnd">
+
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceBodyLarge"
+        android:textColor="?android:textColorPrimary"
+        tools:text="@tools:sample/cities" />
+
+    <TextView
+        android:id="@+id/textView_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?textAppearanceBodyMedium"
+        android:textColor="?android:textColorSecondary"
+        tools:text="$100" />
 
 </LinearLayout>

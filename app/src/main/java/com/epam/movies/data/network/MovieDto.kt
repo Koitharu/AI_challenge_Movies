@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
 class MovieDto(
     @Json(name = "id") val id: String,
     @Json(name = "name") val name: String,
-    @Json(name = "price") val price: Int
+    @Json(name = "price") val price: Double
 ) {
 
     fun toMovie() = Movie(
