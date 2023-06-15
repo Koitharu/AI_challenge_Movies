@@ -10,6 +10,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.epam.movies.databinding.ActivityListBinding
+import com.epam.movies.domain.Movie
+import com.epam.movies.ui.details.DetailsActivity
 import com.epam.movies.ui.setItemsAwait
 import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
@@ -30,7 +32,7 @@ class ListActivity : AppCompatActivity() {
         setSupportActionBar(viewBinding.toolbar)
         val listAdapter = AsyncListDifferDelegationAdapter(
             MoviesDiffCallback(),
-            movieItemAD { }
+            movieItemAD(::openDetails)
         )
         viewBinding.recyclerView.adapter = listAdapter
         viewBinding.recyclerView.setHasFixedSize(true)
@@ -62,5 +64,10 @@ class ListActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun openDetails(movie: Movie) {
+        val intent = DetailsActivity.newIntent(this, movie.id)
+        startActivity(intent)
     }
 }

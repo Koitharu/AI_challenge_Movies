@@ -14,6 +14,8 @@ fun movieItemAD(
 
     val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
 
+    itemView.setOnClickListener { onClick(item) }
+
     bind {
         binding.textViewTitle.text = item.name
         binding.textViewPrice.text = currencyFormat.format(item.price)

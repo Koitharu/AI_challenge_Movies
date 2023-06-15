@@ -1,11 +1,16 @@
 package com.epam.movies
 
+import android.content.Context
+import coil.ImageLoader
+import coil.disk.DiskCache
 import com.epam.movies.data.network.MoviesApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -45,4 +50,26 @@ object AppModule {
     fun provideMoviesApi(
         retrofit: Retrofit
     ): MoviesApi = retrofit.create()
+
+    @Provides
+    @Singleton
+    fun provideImageLoader(
+        @ApplicationContext context: Context,
+        okHttpClient: OkHttpClient,
+    ): ImageLoader {
+        val diskCacheFactory = {
+            val rootDir = context.externalCacheDir ?: context.cacheDir
+            DiskCache.Builder()
+                .directory(rootDir.resolve("images"))
+                .build()
+        }
+        return ImageLoader.Builder(context)
+            .okHttpClient(okHttpClient.newBuilder().cache(null).build())
+            .interceptorDispatcher(Dispatchers.Default)
+            .fetcherDispatcher(Dispatchers.IO)
+            .decoderDispatcher(Dispatchers.Default)
+            .transformationDispatcher(Dispatchers.Default)
+            .diskCache(diskCacheFactory)
+            .build()
+    }
 }
