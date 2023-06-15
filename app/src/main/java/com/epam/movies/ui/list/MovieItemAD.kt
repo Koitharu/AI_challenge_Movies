@@ -18,6 +18,6 @@ fun movieItemAD(
 
     bind {
         binding.textViewTitle.text = item.name
-        binding.textViewPrice.text = currencyFormat.format(item.price)
+        binding.textViewPrice.text = currencyFormat.format(item.price.toLong())
     }
 }

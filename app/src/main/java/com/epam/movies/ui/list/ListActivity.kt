@@ -1,6 +1,8 @@
 package com.epam.movies.ui.list
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -9,9 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.epam.movies.R
 import com.epam.movies.databinding.ActivityListBinding
 import com.epam.movies.domain.Movie
 import com.epam.movies.ui.details.DetailsActivity
+import com.epam.movies.ui.list.filter.FilterBottomSheet
 import com.epam.movies.ui.setItemsAwait
 import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
@@ -64,6 +68,26 @@ class ListActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.opt_list, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_filter -> {
+                openFilter()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun openFilter() {
+        FilterBottomSheet().show(supportFragmentManager, null)
     }
 
     private fun openDetails(movie: Movie) {

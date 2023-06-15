@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_order" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_order_name"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/name" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_order_price"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/price" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/price" />
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/slider_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stepSize="10"
+                android:valueFrom="0.0"
+                android:valueTo="1500.0"
+                app:labelBehavior="visible" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

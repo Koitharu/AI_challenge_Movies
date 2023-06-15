@@ -66,7 +66,7 @@ class DetailsActivity : AppCompatActivity() {
         title = details.name
         viewBinding.textViewTitle.text = details.name
         viewBinding.textViewMeta.text = details.meta
-        viewBinding.textViewPrice.text = currencyFormat.format(details.price)
+        viewBinding.textViewPrice.text = currencyFormat.format(details.price.toLong())
         viewBinding.textViewSynopsis.text = details.synopsis
         val imageRequest = ImageRequest.Builder(this)
             .data(details.image)

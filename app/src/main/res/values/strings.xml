@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="price">Price</string>
+    <string name="name">Name</string>
+    <string name="sort_order">Sort order</string>
+    <string name="filter">Filter</string>
 </resources>
