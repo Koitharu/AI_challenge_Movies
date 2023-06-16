@@ -17,7 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'API_HOST', '"us-central1-testmodule-12b1c.cloudfunctions.net"'
+        buildConfigField 'String', 'API_HOST', '"us-central1-temporary-692af.cloudfunctions.net"'
     }
 
     buildTypes {
